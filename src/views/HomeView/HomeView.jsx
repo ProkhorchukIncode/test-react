@@ -6,6 +6,8 @@ import { Link} from "react-router-dom"
 import {fetchAllUsers} from '../../redux/user-operations'
 import { getAllUsers } from "../../redux/user-selectors"
 
+import Card from "@material-ui/core/Card"
+
 const HomeView = () => {
     const dispatch = useDispatch();
     const users = useSelector(getAllUsers);
@@ -18,17 +20,17 @@ const HomeView = () => {
     <ul>
         {users?.map(({id, firstName, lastName, picture}) => {
             return (
-                <li key = {id}>
-                    <Link to={{
-                            pathname: `${id}`,
-                        }}>
-                        <div>
-                            <img src={picture} alt={lastName} />
-                            <p>{firstName}</p>
-                            <p>{lastName}</p>
-                        </div>
-                    </Link>
-                </li>
+                <Card component='li' key = {id}>
+                        <Link to={{
+                                pathname: `${id}`,
+                            }}>
+                            <div>
+                                <img src={picture} alt={lastName} />
+                                <p>{firstName}</p>
+                                <p>{lastName}</p>
+                            </div>
+                        </Link>
+                </Card>
             )
         })}
     </ul>)
