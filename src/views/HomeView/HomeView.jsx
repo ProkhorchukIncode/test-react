@@ -17,17 +17,19 @@ const HomeView = () => {
     return (
     <ul>
         {users?.map(({id, firstName, lastName, picture}) => {
-            return <li key = {id}>
-                <Link to={{
-                        pathname: `${id}`,
-                    }}>
-                    <div>
-                        <img src={picture} alt={lastName} />
-                        <p>{firstName}</p>
-                        <p>{lastName}</p>
-                    </div>
-                </Link>
-            </li>
+            return (
+                <li key = {id}>
+                    <Link to={{
+                            pathname: `${id}`,
+                        }}>
+                        <div>
+                            <img src={picture} alt={lastName} />
+                            <p>{firstName}</p>
+                            <p>{lastName}</p>
+                        </div>
+                    </Link>
+                </li>
+            )
         })}
     </ul>)
 }
