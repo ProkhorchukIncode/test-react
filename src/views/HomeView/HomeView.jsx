@@ -6,7 +6,9 @@ import { Link} from "react-router-dom"
 import {fetchAllUsers} from '../../redux/user-operations'
 import { getAllUsers } from "../../redux/user-selectors"
 
-import Card from "@material-ui/core/Card"
+
+import Grid from "@material-ui/core/Grid"
+import Box from "@material-ui/core/Box"
 
 const HomeView = () => {
     const dispatch = useDispatch();
@@ -17,10 +19,13 @@ const HomeView = () => {
     },[dispatch])
 
     return (
-    <ul>
+    <Grid container  component='ul' > 
         {users?.map(({id, firstName, lastName, picture}) => {
             return (
-                <Card component='li' key = {id}>
+                <Box component='li' sx={{ 
+                    width: 300,
+                    paddingTop: 2
+                 }} key = {id}>
                         <Link to={{
                                 pathname: `${id}`,
                             }}>
@@ -30,9 +35,9 @@ const HomeView = () => {
                                 <p>{lastName}</p>
                             </div>
                         </Link>
-                </Card>
+                </Box>
             )
         })}
-    </ul>)
+    </Grid>)
 }
 export default HomeView
