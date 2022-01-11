@@ -1,6 +1,6 @@
 :root{
     --primary-background-color: #fff;
-    --secondary-background-color: #fff;
-    --primary-text-color: #fff;
-    --secondary-text-color: #fff;
+    --secondary-background-color: rgb(90, 90, 90);
+    --primary-text-color: rgb(20, 82, 41);
+    --secondary-text-color: rgb(119, 119, 119);
 }

@@ -1,12 +1,11 @@
-// import logo from './logo.svg';
-// import './App.css';
-
 import { Route, Routes, Navigate} from 'react-router-dom';
 
 import HomeView from './views/HomeView';
 import UserView from './views/UserView';
 
 import Container from '@material-ui/core/Container';
+
+import './styles/main.css'
 
 function App() {
   return (
