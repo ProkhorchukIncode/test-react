@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link} from "react-router-dom"
 import { useParams } from "react-router-dom"
 
-import {fetchUser} from '../../redux/user-operations'
-import { getUser, getIsLoading } from "../../redux/user-selectors"
+import {fetchUser} from '../../redux/userOperations'
+import { selectUser, selectUserIsLoading } from "../../redux/userSelectors"
 
 import DateOfBirth from "../../components/DateOfBirth"
 import LoaderComponent from "../../components/LoaderComponent"
@@ -21,20 +21,23 @@ import Cake from "@material-ui/icons/Cake"
 
 const UserCard = () => {
     const dispatch = useDispatch();
-    const {picture, firstName, lastName, email, dateOfBirth} = useSelector(getUser);
-    const loading = useSelector(getIsLoading);
+    const user = useSelector(selectUser);
+    const loading = useSelector(selectUserIsLoading);
     const {id} = useParams();
 
+    const {picture, firstName, lastName, email, dateOfBirth} = user
+
     useEffect(() => {
-        dispatch(fetchUser(id))
+            dispatch(fetchUser(id))
     },[dispatch])
 
     return (
         <>
-            {loading ? 
+            {loading === 'pending' ? 
                 (<LoaderComponent/>) 
                 :
-                (<Box sx={{pt:5}}>
+                (
+                <Box sx={{pt:5}}>
                     <Grid container spacing={2}>
                         <Grid> 
                             <Box sx={{mr:10}}>
@@ -76,8 +79,9 @@ const UserCard = () => {
                             </Box>
                         </Grid>
                     </Grid>
-                </Box>)
-            }
+                </Box>
+                ) 
+            } 
         </>
     )
 }

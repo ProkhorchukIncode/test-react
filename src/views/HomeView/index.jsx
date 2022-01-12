@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import {fetchAllUsers} from '../../redux/user-operations'
-import { getAllUsers, getIsLoading } from "../../redux/user-selectors"
+import {fetchListUsers} from '../../redux/userOperations'
+import { selectAllUsers, selectUserListIsLoading } from "../../redux/userSelectors"
 
 import LoaderComponent from "../../components/LoaderComponent"
 
@@ -12,20 +12,20 @@ import CardUser from "../../components/CardUser"
 
 const HomeView = () => {
     const dispatch = useDispatch();
-    const users = useSelector(getAllUsers);
-    const loading = useSelector(getIsLoading);
-
+    const users = useSelector(selectAllUsers);
+    const loading = useSelector(selectUserListIsLoading);
+    console.log(!users);
     useEffect(() => {
-        dispatch(fetchAllUsers())
+        dispatch(fetchListUsers())
     },[dispatch])
 
     return (
-        // <LoaderComponent/>
         <>
-            {loading ? 
+            {loading === 'pending' ? 
             (<LoaderComponent/>) 
             :
-            (<Box sx={{pt:2}}>
+            (
+            <Box sx={{pt:2}}>
                 <Grid container component='ul' spacing={2}> 
                     {users?.map(({id, firstName, lastName, picture}) => {
                         return (
@@ -35,8 +35,9 @@ const HomeView = () => {
                         )
                     })}
                 </Grid>
-            </Box>)
-            }
+            </Box>
+            )
+            } 
         </>
     )
 }

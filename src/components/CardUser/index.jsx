@@ -8,9 +8,7 @@ import Typography from "@material-ui/core/Typography"
 const CardUser = ({id, firstName, lastName, picture}) => {
     return(
         <Card>
-            <Link to={{
-                pathname: `${id}`,
-            }}>
+            <Link to={`/users/${id}`}>
                 <Box sx={{p: 2, pt: 2}}>
                     <Box sx={{mb: 2}} >
                         <Avatar src={picture} alt={lastName} 
