@@ -9,17 +9,22 @@ const allUsers = createReducer([], {
 )
 
 const user = createReducer([], {
-    [fetchUser.fulfilled]:(_, {payload}) => payload
-}
+        [fetchUser.fulfilled]:(_, {payload}) => payload
+    }
 )
 
-// const user = createReducer([], {
-//         [fetchUser.fulfilled]:(_, {payload}) => console.log(payload)
-//         // payload
-//     }
-// )
+const isLoading = createReducer(true, {
+    [fetchAllUsers.pending]:() => true,
+    [fetchAllUsers.fulfilled]:() => false,
+    [fetchAllUsers.rejected]:() => true,
+    [fetchUser.pending]:() => true,
+    [fetchUser.fulfilled]:() => false,
+    [fetchUser.rejected]:() => true,
+    }
+)
 
 export default combineReducers({
     allUsers,
-    user
+    user, 
+    isLoading
 })
