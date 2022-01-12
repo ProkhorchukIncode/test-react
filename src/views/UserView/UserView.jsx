@@ -10,6 +10,14 @@ import { useParams } from "react-router-dom"
 
 import DateOfBirth from "../../components/DateOfBirth/DateOfBirth"
 
+import Box from "@material-ui/core/Box"
+import Typography from "@material-ui/core/Typography"
+import Grid from "@material-ui/core/Grid"
+
+import AccessibilityNew from "@material-ui/icons/AccessibilityNew"
+import AlternateEmail from "@material-ui/icons/AlternateEmail"
+import Cake from "@material-ui/icons/Cake"
+
 const UserCard = () => {
     const dispatch = useDispatch();
     const {picture, firstName, lastName, email, dateOfBirth} = useSelector(getUser);
@@ -19,21 +27,46 @@ const UserCard = () => {
         dispatch(fetchUser(id))
     },[dispatch])
 
-
-
-    return <>
-        <div>
-            <img src={picture} alt={lastName}/>
-            <p>{firstName}</p>
-            <p>{lastName}</p>
-            <p>{email}</p>
-            {dateOfBirth ? <>
-                <DateOfBirth dateOfBirth={dateOfBirth}/>
-            </>
-            : <p>No date of birth</p>
-        }
-            <Link to='/users'>To Home</Link>
-        </div>
-    </>
+    return (
+        <Box sx={{pt:5}}>
+            <Grid container spacing={2}>
+                <Grid>
+                    <Box sx={{mr:10}}>
+                        <img src={picture} alt={lastName} 
+                        style={{
+                            width: '300px',
+                            height:"300px",
+                    }}/>
+                    </Box>
+                </Grid>
+                <Grid>
+                    <Box>
+                        <Typography style={{textAlign: 'center', fontSize: '25px'}} component='h2'>
+                            Information
+                        </Typography>
+                        <Box sx={{pt:2}}>
+                            <Typography sx={{mr:2}}>
+                                <AccessibilityNew style={{marginRight: '20px'}}/>
+                                {firstName} {lastName}
+                            </Typography>
+                            <Typography>
+                                <AlternateEmail style={{marginRight: '20px'}}/>
+                                {email}
+                            </Typography>
+                            <Cake style={{marginRight: '20px'}}/>
+                            {dateOfBirth ? <>
+                                <DateOfBirth dateOfBirth={dateOfBirth}/>
+                            </>
+                            : <Typography>No date of birth</Typography>
+                        }
+                        </Box>
+                    </Box>
+                    <Box sx={{mt:20}}>
+                        <Link to='/users'>&#10094; To Home</Link>
+                    </Box>
+                </Grid>
+            </Grid>
+        </Box>
+    )
 }
 export default UserCard
