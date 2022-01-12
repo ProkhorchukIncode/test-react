@@ -14,7 +14,7 @@ const HomeView = () => {
     const dispatch = useDispatch();
     const users = useSelector(getAllUsers);
     const loading = useSelector(getIsLoading);
-console.log(loading);
+
     useEffect(() => {
         dispatch(fetchAllUsers())
     },[dispatch])
