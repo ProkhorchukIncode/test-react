@@ -13,6 +13,7 @@ import DateOfBirth from "../../components/DateOfBirth/DateOfBirth"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
+import Card from "@material-ui/core/Card"
 
 import AccessibilityNew from "@material-ui/icons/AccessibilityNew"
 import AlternateEmail from "@material-ui/icons/AlternateEmail"
@@ -30,38 +31,42 @@ const UserCard = () => {
     return (
         <Box sx={{pt:5}}>
             <Grid container spacing={2}>
-                <Grid>
+                <Grid> 
                     <Box sx={{mr:10}}>
-                        <img src={picture} alt={lastName} 
-                        style={{
-                            width: '300px',
-                            height:"300px",
-                    }}/>
+                        <Card>
+                            <img src={picture} alt={lastName} 
+                            style={{
+                                width: '300px',
+                                height:"300px",
+                            }}/>
+                        </Card>
                     </Box>
                 </Grid>
                 <Grid>
-                    <Box>
-                        <Typography style={{textAlign: 'center', fontSize: '25px'}} component='h2'>
-                            Information
-                        </Typography>
-                        <Box sx={{pt:2}}>
-                            <Typography sx={{mr:2}}>
-                                <AccessibilityNew style={{marginRight: '20px'}}/>
-                                {firstName} {lastName}
+                    <Card>
+                        <Box sx={{p:10}}>
+                            <Typography style={{textAlign: 'center', fontSize: '25px'}} component='h2'>
+                                Information
                             </Typography>
-                            <Typography>
-                                <AlternateEmail style={{marginRight: '20px'}}/>
-                                {email}
-                            </Typography>
-                            <Cake style={{marginRight: '20px'}}/>
-                            {dateOfBirth ? <>
-                                <DateOfBirth dateOfBirth={dateOfBirth}/>
-                            </>
-                            : <Typography>No date of birth</Typography>
-                        }
+                            <Box sx={{pt:2}}>
+                                <Typography sx={{mr:2}}>
+                                    <AccessibilityNew style={{marginRight: '20px'}}/>
+                                    {firstName} {lastName}
+                                </Typography>
+                                <Typography>
+                                    <AlternateEmail style={{marginRight: '20px'}}/>
+                                    {email}
+                                </Typography>
+                                <Cake style={{marginRight: '20px'}}/>
+                                {dateOfBirth ? <>
+                                    <DateOfBirth dateOfBirth={dateOfBirth}/>
+                                </>
+                                : <Typography>No date of birth</Typography>
+                            }
+                            </Box>
                         </Box>
-                    </Box>
-                    <Box sx={{mt:20}}>
+                    </Card>
+                    <Box sx={{mt:10}}>
                         <Link to='/users'>&#10094; To Home</Link>
                     </Box>
                 </Grid>

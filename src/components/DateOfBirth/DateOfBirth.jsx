@@ -5,7 +5,7 @@ const DateOfBirth = ({dateOfBirth}) => {
     const day = formatingDateArray[2].split('T')[0]
     return (
         <>
-        {year}:{mounth}:{day}
+        {year}/{mounth}/{day}
         </>
     )
 }
