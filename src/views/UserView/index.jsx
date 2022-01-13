@@ -28,8 +28,9 @@ const UserCard = () => {
     const {picture, firstName, lastName, email, dateOfBirth} = user
 
     useEffect(() => {
-        if(user.id !== id)
+        if(user.id !== id){
             dispatch(fetchUser(id))
+        }
     },[dispatch])
 
     return (
