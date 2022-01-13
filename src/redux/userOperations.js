@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from '../services/axiosInstance'
 
-export const fetchListUsers = createAsyncThunk('users/readUser', async (_, { rejectWithValue }) => {
+export const fetchListUsers = createAsyncThunk('users/readListUser', async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get('/user?limit=12')
       return response.data

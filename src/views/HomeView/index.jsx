@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import {fetchListUsers} from '../../redux/userOperations'
-import { selectAllUsers, selectUserListIsLoading } from "../../redux/userSelectors"
+import { selectUserList, selectUserListIsLoading } from "../../redux/userSelectors"
 
 import LoaderComponent from "../../components/LoaderComponent"
 
@@ -12,11 +12,13 @@ import CardUser from "../../components/CardUser"
 
 const HomeView = () => {
     const dispatch = useDispatch();
-    const users = useSelector(selectAllUsers);
+    const users = useSelector(selectUserList);
     const loading = useSelector(selectUserListIsLoading);
-    console.log(!users);
+
     useEffect(() => {
-        dispatch(fetchListUsers())
+        if(!users){
+            dispatch(fetchListUsers())
+        }
     },[dispatch])
 
     return (
