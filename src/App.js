@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/users' element ={<HomeView/>}/>
         <Route path='/users/:id' element ={<UserView/>}/>
-        <Route path='/' element ={<Navigate replace to='/users'/>}/>
+        <Route path='*' element ={<Navigate replace to='/users'/>}/>
       </Routes>
     </Container>
   );
