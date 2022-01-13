@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import axios from '../services/axiosInstance'
+import axios from '../API/axiosInstance'
 
 export const fetchListUsers = createAsyncThunk('users/readListUser', async (_, { rejectWithValue }) => {
     try {
