@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link} from "react-router-dom"
 import { useParams } from "react-router-dom"
 
-import {fetchUser, selectUser, selectUserIsLoading, selectUserError} from '../../redux/users/userSlice'
+import {fetchUser} from '../../redux/users/userSlice'
 
 import DateOfBirth from "../../components/DateOfBirth"
 import LoaderComponent from "../../components/LoaderComponent"
@@ -21,9 +21,9 @@ import Cake from "@material-ui/icons/Cake"
 
 const UserCard = () => {
     const dispatch = useDispatch();
-    const user = useSelector(selectUser);
-    const loading = useSelector(selectUserIsLoading);
-    const errMassage = useSelector(selectUserError)
+    const user = useSelector((state) => state.user.entities);
+    const loading = useSelector((state) => state.user.loading);
+    const errMassage = useSelector((state) => state.user.error)
     const {id} = useParams();
 
     const {picture, firstName, lastName, email, dateOfBirth} = user

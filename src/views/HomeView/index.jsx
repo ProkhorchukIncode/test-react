@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import {fetchListUsers, selectUserList, selectUserListIsLoading, selectUserError} from '../../redux/users/userListSlice'
+import {fetchListUsers } from '../../redux/users/userListSlice'
 
 import LoaderComponent from "../../components/LoaderComponent"
 import CardUser from "../../components/CardUser"
@@ -12,9 +12,9 @@ import Box from "@material-ui/core/Box"
 
 const HomeView = () => {
     const dispatch = useDispatch();
-    const users = useSelector(selectUserList);
-    const loading = useSelector(selectUserListIsLoading);
-    const errMassage = useSelector(selectUserError)
+    const users = useSelector((state) => state.userList.entities?.data);
+    const loading = useSelector((state) => state.userList.loading);
+    const errMassage = useSelector((state) => state.userList.error);
 
     useEffect(() => {
         if(!users){

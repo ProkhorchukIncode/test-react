@@ -31,8 +31,4 @@ const userListSlice = createSlice({
   },
 })
 
-export const selectUserList = (state) => state.userList?.entities?.data;
-export const selectUserListIsLoading = (state) => state.userList.loading;
-export const selectUserError = (state) => state.userList.error;
-
 export default userListSlice.reducer
