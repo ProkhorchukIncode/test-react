@@ -4,7 +4,7 @@ import axios from '../../API/axiosInstance'
 
 export const fetchListUsers = createAsyncThunk('users/readListUser', async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/us111er?limit=12')
+      const response = await axios.get('/user?limit=12')
       return response.data
     } catch (err) {
       let error = err; 

@@ -8,6 +8,7 @@ import {fetchUser, selectUser, selectUserIsLoading, selectUserError} from '../..
 
 import DateOfBirth from "../../components/DateOfBirth"
 import LoaderComponent from "../../components/LoaderComponent"
+import ErrorComponent from "../../components/ErrorComponent"
 
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
@@ -24,7 +25,6 @@ const UserCard = () => {
     const loading = useSelector(selectUserIsLoading);
     const errMassage = useSelector(selectUserError)
     const {id} = useParams();
-    console.log(errMassage);
 
     const {picture, firstName, lastName, email, dateOfBirth} = user
 
@@ -41,7 +41,12 @@ const UserCard = () => {
                 :
                 (<>
                     {errMassage ? 
-                        (<p>{errMassage}</p>) 
+                        (<>
+                            <ErrorComponent errMassage={errMassage}/>
+                            <Box sx={{mt:10}} style={{textAlign: 'center'}}>
+                                <Link to='/users'>&#10094; To Home</Link>
+                            </Box>
+                        </>) 
                         :
                         (
                         <Box sx={{pt:5}}>

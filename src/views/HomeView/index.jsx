@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux"
 import {fetchListUsers, selectUserList, selectUserListIsLoading, selectUserError} from '../../redux/users/userListSlice'
 
 import LoaderComponent from "../../components/LoaderComponent"
+import CardUser from "../../components/CardUser"
+import ErrorComponent from "../../components/ErrorComponent"
 
 import Grid from "@material-ui/core/Grid"
 import Box from "@material-ui/core/Box"
-import CardUser from "../../components/CardUser"
 
 const HomeView = () => {
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const HomeView = () => {
             :
             (<>
                 {errMassage  ? 
-                (<p>{errMassage}</p>) 
+                (<ErrorComponent errMassage={errMassage}/>) 
                 :
                 (
                 <Box sx={{pt:2}}>
